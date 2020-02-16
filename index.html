@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript" src="./jquery.js"></script>
+  <script type="text/javascript" src="./jquery-cycle-all.js"></script>
+
+
+  <script type="text/javascript">
+    var html = '';
+    $(document).ready(function () {
+      $.getJSON('./activities.json', function (data) {
+        $.each(data, function (key, value) {
+          $.each(value, function (index, stuff) {
+
+            html += '<div class="activities">';
+            html += '<h2 id="title">' + stuff.Activity + '</h2>';
+            html += '<p onclick="activityinfo(' + index + ')"><img src="' + stuff.Source + '" style="max-width:100%;max-height:100%;"></p>';
+            html += '</div>'
+
+          });
+        });
+        $('#activities').html(html);
+
+        $('#activities').cycle({
+          fx: 'fade',
+          pause: '1',
+          prev: '#prev',
+          next: '#next',
+          speed: 500,
+          timeout: 10000
+        });
+      });
+    });
+  </script>
+  <script type="text/javascript" src="./activityInfo.js"></script>
+  <title>Carousel</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Activity Carousel</h1>
+      <hr class="my-4">
+      <p>Click on a book for more details.</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6" id="activities">
+
+      </div>
+      <div class="col-md-6">
+        <p id="information"></p>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
