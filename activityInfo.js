@@ -39,13 +39,16 @@ function activityinfo(t) {
             // be accessed as jsonObj.name and jsonObj.country.
             var text = "";
             for (var i = 0; i < jsonObj.activities.length; i++) {
+                // finds the ID connected to the ID on the picture they clicked on
                 if (jsonObj.activities[i].id == t) {
+                    // grabs the Description
                     text = text + jsonObj.activities[i].desc;
                     var selection = i;
                 }
 
             }
             console.log(selection);
+            // displays the description in information tag
             document.getElementById("information").innerHTML = text;
 
         }

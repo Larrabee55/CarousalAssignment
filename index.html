@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+  <!-- imports Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  <!-- imports JQuery and Jquery Cycle -->
   <script type="text/javascript" src="./jquery.js"></script>
   <script type="text/javascript" src="./jquery-cycle-all.js"></script>
 
@@ -15,7 +16,7 @@
       $.getJSON('./activities.json', function (data) {
         $.each(data, function (key, value) {
           $.each(value, function (index, stuff) {
-
+            // each activity being added to HTML
             html += '<div class="activities">';
             html += '<h2 id="title">' + stuff.Activity + '</h2>';
             html += '<p onclick="activityinfo(' + index + ')"><img src="' + stuff.Source + '" style="max-width:100%;max-height:100%;"></p>';
@@ -24,7 +25,7 @@
           });
         });
         $('#activities').html(html);
-
+        // how the image and name of activity cycles
         $('#activities').cycle({
           fx: 'fade',
           pause: '1',
@@ -41,6 +42,7 @@
 </head>
 
 <body>
+
   <div class="container">
     <div class="jumbotron">
       <h1 class="display-4">Activity Carousel</h1>
@@ -48,10 +50,12 @@
       <p>Click on a Picture for more details.</p>
     </div>
     <div class="row">
+      <!-- where activity name and image goes -->
       <div class="col-md-6" id="activities">
 
       </div>
       <div class="col-md-6">
+        <!-- where information about activity goes if image is clicked on -->
         <h3 id="information"></h3>
       </div>
 
