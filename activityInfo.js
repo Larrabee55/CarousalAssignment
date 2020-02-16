@@ -38,9 +38,9 @@ function activityinfo(t) {
             // jsonObj variable now contains the data structure and can
             // be accessed as jsonObj.name and jsonObj.country.
             var text = "";
-            for (var i = 0; i < jsonObj.book.length; i++) {
-                if (jsonObj.book[i].id == t) {
-                    text = text + jsonObj.book[i].desc;
+            for (var i = 0; i < jsonObj.activities.length; i++) {
+                if (jsonObj.activities[i].id == t) {
+                    text = text + jsonObj.activities[i].desc;
                     var selection = i;
                 }
 
